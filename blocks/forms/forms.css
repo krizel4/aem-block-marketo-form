@@ -40,6 +40,7 @@
 }
 
 main .section.form-container {
+    background-color: red;
     padding: var(--form-container-padding);
     font-family: var(--mt-form-font-family);
     background-image: url('../../styles/icons/Mammotome-BG_Pattern-1.svg');
