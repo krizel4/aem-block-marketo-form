@@ -7,23 +7,32 @@ const loadScript = (src, block) => new Promise((resolve, reject) => {
 });
 
 const embedMarketoForm = async (block, formId) => {
-  try {
-    await loadScript('//www2.mammotome.com/js/forms2/js/forms2.min.js', block);
-    const formElement = document.createElement('form');
-    formElement.id = `mktoForm_${formId}`;
-    block.appendChild(formElement);
-    if (window.MktoForms2) {
-      MktoForms2.loadForm('//www2.mammotome.com', '435-TDP-284', formId, (form) => {
-        form.onSuccess(() => {
-        console.log('form submitted successfully');
-          // window.location.href = 'https://www.mammotome.com/us/en/thank-you/';
+  await loadScript('//www2.mammotome.com/js/forms2/js/forms2.min.js', block);
+  const formElement = document.createElement('form');
+  formElement.id = `mktoForm_${formId}`;
+  block.appendChild(formElement);
+  if (window.MktoForms2) {
+    MktoForms2.whenReady((form) => {
+      form.onSuccess((values, followUpUrl) => {
+        console.log('Form submitted successfully', values, followUpUrl);
+        if (!followUpUrl) {
+          console.error('FollowUp URL is missing or invalid:', followUpUrl);
           return false;
+        }
+        dataLayer.push({
+          event: 'marketo.success',
+          'marketo.form_id': formId,
+          'marketo.form_values': values,
+          'marketo.follow_up_url': followUpUrl,
+          eventCallback() {
+            console.log('Working on the redirect...');
+            form.getFormElem().hide();
+            document.location.href = followUpUrl;
+          },
         });
+        return false;
       });
-    }
-  } catch (error) {
-    console.error('Error embedding Marketo form:', error);
-    block.textContent = 'Error: Unable to load the form. Please try again later.';
+    });
   }
 };
 
