@@ -8,15 +8,20 @@ const loadScript = (src, block) => new Promise((resolve, reject) => {
 
 const embedMarketoForm = async (block, formId) => {
   try {
-    await loadScript('https://www2.mammotome.com/js/forms2/js/forms2.min.js', block);
+    await loadScript('//www2.mammotome.com/js/forms2/js/forms2.min.js', block);
     const formElement = document.createElement('form');
     formElement.id = `mktoForm_${formId}`;
     block.appendChild(formElement);
     if (window.MktoForms2) {
-      MktoForms2.loadForm('https://www2.mammotome.com', '435-TDP-284', formId, (form) => {
-        form.onSuccess((followUpUrl) => {
-          window.location.href = followUpUrl;
-          return false;
+      MktoForms2.whenReady('//www2.mammotome.com', '435-TDP-284', formId, (form) => {
+        form.onSuccess((values, followUpUrl) => {
+          dataLayer.push({
+            event: 'gaEvent',
+            eventCallback: () => {
+              form.getFormElem().hide();
+              document.getElementById('confirmformcatalog').style.visibility = 'visible';
+            },
+          });
         });
       });
     }
