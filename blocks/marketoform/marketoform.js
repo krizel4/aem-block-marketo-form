@@ -13,15 +13,11 @@ const embedMarketoForm = async (block, formId) => {
     formElement.id = `mktoForm_${formId}`;
     block.appendChild(formElement);
     if (window.MktoForms2) {
-      MktoForms2.whenReady('//www2.mammotome.com', '435-TDP-284', formId, (form) => {
-        form.onSuccess((values, followUpUrl) => {
-          dataLayer.push({
-            event: 'gaEvent',
-            eventCallback: () => {
-              form.getFormElem().hide();
-              document.getElementById('confirmformcatalog').style.visibility = 'visible';
-            },
-          });
+      MktoForms2.loadForm('//www2.mammotome.com', '435-TDP-284', formId, (form) => {
+        form.onSuccess(() => {
+        console.log('form submitted successfully');
+          // window.location.href = 'https://www.mammotome.com/us/en/thank-you/';
+          return false;
         });
       });
     }
