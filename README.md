@@ -10,7 +10,7 @@ In the word document, the block name is "marketoform" and in the text content ar
 ![Example of embed form code from Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/forms/form-actions/media_143d0c35a972b429e2ddb7dda1cda3cf22866e8ee.png)
 - dataLayer.push for Google Tag Manager [Link to Add'l Info from Marketo Engage Community](https://nation.marketo.com/t5/product-discussions/how-to-track-marketo-forms-in-google-analytics-using-using-api/td-p/305735)
     - event: 'marketo.success'
-    - timestamp: new Date().toISOString()
+    - 'marketo.timestamp': new Date().toLocaleTimeString()
     - 'marketo.form_id': formId
     - 'marketo.form_values': values
     - 'marketo.follow_up_url': followUpUrl
