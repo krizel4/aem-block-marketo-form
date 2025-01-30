@@ -33,6 +33,7 @@ const embedMarketoForm = async (block, formId) => {
 
       dataLayer.push({
         event: 'marketo.success',
+        timestamp: new Date().toISOString(),
         'marketo.form_id': formId,
         'marketo.form_values': values,
         'marketo.follow_up_url': followUpUrl,
