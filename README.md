@@ -1,6 +1,9 @@
 # AEM Block: Marketo Form
 In the word document, the block name is "marketoform" and in the text content area, it takes in the Marketo form's ID.
 
+<img width="601" alt="example of marketo form block with text content including form id" src="https://github.com/user-attachments/assets/d7849313-dc5d-43d1-b40b-1fd7d4292909" />
+
+
 ## Modifications
 - [Munchkin ID](https://nation.marketo.com/t5/knowledgebase/how-to-find-your-munchkin-id-for-a-marketo-instance/ta-p/248432)
 - Form Id: In the photo example below, you can see the 4-digit form ID after the Munchkin ID (162-LBR-557).
