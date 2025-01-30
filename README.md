@@ -1,34 +1,8 @@
-# Your Project's Title...
-Your project's description...
+# AEM Block: Marketo Form
+In the word document, the block name is "marketoform" and in the text content area, it takes in the Marketo form's ID.
 
-## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
-
-## Documentation
-
-Before using the aem-boilerplate, we recommand you to go through the documentation on https://www.aem.live/docs/ and more specifically:
-1. [Developer Tutorial](https://www.aem.live/developer/tutorial)
-2. [The Anatomy of a Project](https://www.aem.live/developer/anatomy-of-a-project)
-3. [Web Performance](https://www.aem.live/developer/keeping-it-100)
-4. [Markup, Sections, Blocks, and Auto Blocking](https://www.aem.live/developer/markup-sections-blocks)
-
-## Installation
-
-```sh
-npm i
-```
-
-## Linting
-
-```sh
-npm run lint
-```
-
-## Local development
-
-1. Create a new repository based on the `aem-boilerplate` template and add a mountpoint in the `fstab.yaml`
-1. Add the [AEM Code Sync GitHub App](https://github.com/apps/aem-code-sync) to the repository
-1. Install the [AEM CLI](https://github.com/adobe/helix-cli): `npm install -g @adobe/aem-cli`
-1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000`)
-1. Open the `{repo}` directory in your favorite IDE and start coding :)
+## Modifications
+To make this work for you, you'll need the following:
+- [Munchkin ID](https://nation.marketo.com/t5/knowledgebase/how-to-find-your-munchkin-id-for-a-marketo-instance/ta-p/248432)
+- Form Id: In the photo example below, you can see the 4-digit form ID after the Munchkin ID (162-LBR-557).
+![Example of embed form code from Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/forms/form-actions/media_143d0c35a972b429e2ddb7dda1cda3cf22866e8ee.png)
