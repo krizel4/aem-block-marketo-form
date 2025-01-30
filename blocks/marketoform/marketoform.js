@@ -18,25 +18,22 @@ const waitForMktoForms = () => new Promise((resolve) => {
 });
 
 const embedMarketoForm = async (block, formId) => {
-  await loadScript('//www.domainhere.com/js/forms2/js/forms2.min.js', block);
+  await loadScript('//www2.mammotome.com/js/forms2/js/forms2.min.js', block);
   await waitForMktoForms();
 
   const formElement = document.createElement('form');
   formElement.id = `mktoForm_${formId}`;
   block.appendChild(formElement);
 
-  // Place your munchkin code in XXX-XXX-XXX
-  window.MktoForms2.loadForm('//www.domainhere.com', 'XXX-XXX-XXX', formId);
+  window.MktoForms2.loadForm('//www2.mammotome.com', '435-TDP-284', formId);
 
   window.MktoForms2.whenReady((form) => {
     form.onSuccess((values, followUpUrl) => {
-      // Define your followUpUrl in your Marketo form's settings
       window.location.href = followUpUrl;
 
-      // If you're not tracking this information in GTM, this data layer push isn't necessary.
       dataLayer.push({
         event: 'marketo.success',
-        timestamp: new Date().toISOString(),
+        'marketo.timestamp': new Date().toLocaleTimeString(),
         'marketo.form_id': formId,
         'marketo.form_values': values,
         'marketo.follow_up_url': followUpUrl,
