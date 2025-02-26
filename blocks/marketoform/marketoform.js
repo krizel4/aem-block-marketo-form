@@ -18,13 +18,16 @@ const waitForMktoForms = () => new Promise((resolve) => {
 });
 
 const embedMarketoForm = async (block, formId) => {
-  await loadScript('//www2.mammotome.com/js/forms2/js/forms2.min.js', block);
+  
+  // UPDATE THE FOLLOWING LINE
+  await loadScript('//MARKETO-URL-HERE/js/forms2/js/forms2.min.js', block);
   await waitForMktoForms();
 
   const formElement = document.createElement('form');
   formElement.id = `mktoForm_${formId}`;
   block.appendChild(formElement);
 
+  // UPDATE THE FOLLOWING LINE
   window.MktoForms2.loadForm('//MARKETO-URL-HERE', 'YOUR-MUNCHKIN-CODE-HERE', formId);
 
   window.MktoForms2.whenReady((form) => {
